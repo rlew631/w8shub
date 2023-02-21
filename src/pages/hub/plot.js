@@ -8,6 +8,9 @@ const DynamicPlot = dynamic(
   { ssr: false }
 )
 
+// this makes sure that it loads plotly in the background before <DynamicPlot> is called
+if (process.browser){import('react-plotly.js').then((module) =>{return module.default})}
+
 export function Plot(props) {
   const [isLoaded, setIsLoaded] = useState(false)
 
