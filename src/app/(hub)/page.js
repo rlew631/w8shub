@@ -3,13 +3,11 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import {rows, columns} from './data'
 
-import Navbar from '../components/navbar'
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import {Plot} from './plot'
-import "../styles.css";
+// import {Plotly} from './plot'
+import "../globals.css";
 
 const darkTheme = createTheme({
   palette: {
@@ -19,6 +17,8 @@ const darkTheme = createTheme({
 
 export default function App() {
   const [pageSize, setPageSize] = React.useState(10);
+  // create another hook here for a list of selected items' names from the chart
+  // create another hook here for a list of selected items' mAP from the chart
   const [plotX, setPlotX] = React.useState([]);
   const [plotY, setPlotY] = React.useState([]);
 
@@ -33,12 +33,13 @@ export default function App() {
     setPlotY(yvals)
   };
 
+  function renderPlot(plotX){}
+
   return (
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Navbar page='HUB'/>
-        <br/>
+        <h1>HUB</h1>
         <Box sx={{ height: 600, width: '100%' }}>
           <DataGrid
             rows={rows}
@@ -52,7 +53,7 @@ export default function App() {
             onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
           />
         </Box>
-        <Plot x={plotX} y={plotY}/>
+        {/* <Plotly x={plotX} y={plotY}/> */}
 
       </ThemeProvider>
     </>

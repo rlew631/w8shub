@@ -1,5 +1,3 @@
-'use client';
-import './globals.css'
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,9 +7,9 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-// import { useClient } from 'next/client';
+// import Link from 'next/link'
 
-function ButtonAppBar() {
+export default function Navbar(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -26,28 +24,12 @@ function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            {props.page}
+            {/* displays the page name */}
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" href="/login">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
-
-export default function RootLayout({ children }) {
-
-  return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>
-        <ButtonAppBar/>
-        {children}
-      </body>
-    </html>
-  )
 }
