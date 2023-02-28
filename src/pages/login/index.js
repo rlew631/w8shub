@@ -1,7 +1,7 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import Navbar from '../components/navbar'
+import Navbar from '../../components/navbar'
 
 
 const darkTheme = createTheme({

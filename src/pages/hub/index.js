@@ -1,14 +1,14 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import {rows, columns} from './data'
+import {rows, columns} from '../../components/plot_data'
 
-import Navbar from '../components/navbar'
+import Navbar from '../../components/navbar'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import {Plot} from './plot'
+import {Plot} from '../../components/plot'
 import "../styles.css";
 
 const darkTheme = createTheme({
