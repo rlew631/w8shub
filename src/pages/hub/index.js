@@ -9,7 +9,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import {Plot} from '../../components/plot'
-import "../styles.css";
+// import "../styles.css";
 
 const darkTheme = createTheme({
   palette: {
