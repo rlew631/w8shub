@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
+import Image from 'next/image'
 
 const AboutUs = () => {
 
@@ -7,18 +8,24 @@ const AboutUs = () => {
     <Box className='aboutUsContainer'>
       <Grid container spacing={6} className='gridContainer'>
         <Grid item xs={12} md={5}>
-          <img src='/bestTeams.jpg' alt="My Team" className='largeImage' />
+          <Image
+            // loader={myLoader}
+            src='/bestTeams.jpg'
+            alt="My Team"
+            width={700}
+            height={500}
+          />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Typography variant="h3" fontWeight={700} className='title'>
-            We build, We revive
+          <Typography variant="h3" fontWeight={600} className='title'>
+            We see, We build, We learn
           </Typography>
           <Typography className='aboutUsSubtitle'>
-            Your business needs to be in safe hands at all times. We ensure you
-            never run out of customers and not run at loss. We are trusted by
-            over 500+ companies to deliver quality marketing campaigns using
-            Digital marketing & Offline marketing channels.
+            Your AI needs to suit the needs of your business. We ensure you
+            are able to fully comprehend the differences between various SOTA models.
+            We are developed by industry professionals who have first hand experience
+            working with the tools you need for your inference applications.
           </Typography>
           <Button
             variant="contained"

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Typography, Box, Card, CardContent, Grid } from '@mui/material';
 import { Avatar } from '@mui/material';
-// import useStyles from './styles/styles';
 
 const Testimonial = () => {
-  // const classes = useStyles();
   const reviews = [
     {
       id: 1,
@@ -50,7 +48,7 @@ const Testimonial = () => {
             <Card className='testimonialCard'>
               <CardContent>
                 <Typography className='testimonialStatement'>
-                  "{review.statement}"
+                  {review.statement}
                 </Typography>
                 <Box sx={{ display: 'flex' }}>
                   <Avatar

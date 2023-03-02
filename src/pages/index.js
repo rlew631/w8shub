@@ -20,7 +20,7 @@ function App() {
     <>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Navbar />
+      <Navbar page='HOME'/>
       <Hero />
       <Section />
       <AboutUs />

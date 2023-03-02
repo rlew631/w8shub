@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 
+import template from './plot_theme'
+
 const DynamicPlot = dynamic(
   () => import('react-plotly.js').then((module) => {
     return module.default
@@ -45,6 +47,7 @@ export function Plot(props) {
         xref: 'paper',
         x: 0.05,
       },
+      template:template,
       xaxis: {
         title: {
           text: 'Model',
