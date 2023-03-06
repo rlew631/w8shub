@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useRef, useState, useEffect} from 'react';
 import {AppBar, Box, Toolbar, Typography, Button, IconButton,
   Menu, MenuItem, ListItemText} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,11 +15,18 @@ export default function Navbar(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+  // dealing with padding above page content
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  const navbarRef = useRef(null)
+  useEffect(() => {
+    setNavbarHeight(navbarRef.current.offsetHeight);
+  },[]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      {/* <AppBar position="static"> */}
-      <AppBar position="fixed">
+    <div>
+      <AppBar position="fixed" ref={navbarRef}>
+      {/* <AppBar position="sticky"> */}
         <Toolbar>
           <IconButton
             size="large"
@@ -61,6 +69,7 @@ export default function Navbar(props) {
           <Button color="inherit" href="/login">Login</Button>
         </Toolbar>
       </AppBar>
-    </Box>
+      <div className="navbar_spacing" style={{marginTop: navbarHeight}}/>
+    </div>
   );
 }
