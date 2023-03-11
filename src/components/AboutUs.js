@@ -10,10 +10,10 @@ const AboutUs = () => {
         <Grid item xs={12} md={5}>
           <Image
             // loader={myLoader}
-            src='/bestTeams.jpg'
-            alt="My Team"
-            width={700}
-            height={500}
+            src='/vetruvian_pose.jpg'
+            alt="vetruvian man pose estimation"
+            width={400}
+            height={400}
           />
         </Grid>
 

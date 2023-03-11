@@ -8,7 +8,7 @@ const Testimonial = () => {
       id: 1,
       name: 'Karl Brighton',
       statement:
-        'The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.',
+        'The resources provided by w8shub helped provide my team with the confidence needed to move forward on our journey into AI!',
       image_url:
         'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-kady.78fc482c.jpg',
       position: 'Software Engineer at Kadex',
@@ -17,7 +17,7 @@ const Testimonial = () => {
       id: 2,
       name: 'Krishna Bells',
       statement:
-        'We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!',
+        'w8shub clearly explained the differences between the ML models I was looking at and get past all the obscure acronyms used to designate all the variants.',
       image_url:
         'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-aiysha.e119a0c1.jpg',
       position: 'Product Manager at Google',
@@ -26,7 +26,7 @@ const Testimonial = () => {
       id: 3,
       name: 'Ben Spiff',
       statement:
-        'Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.',
+        'Amazing. Our team built an app that delivered a new experience for real time image processing. The launch was an instant success in the first month.',
       image_url:
         'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-arthur.098c2e26.jpg',
       position: 'Founder of Crypto',
