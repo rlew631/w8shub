@@ -8,7 +8,7 @@ const Testimonial = () => {
       id: 1,
       name: 'Karl Brighton',
       statement:
-        'The resources provided by w8shub helped provide my team with the confidence needed to move forward on our journey into AI!',
+        'The resources provided by W8SHub helped provide my team with the confidence needed to move forward on our journey into AI!',
       image_url:
         'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-kady.78fc482c.jpg',
       position: 'Software Engineer at Kadex',
@@ -17,7 +17,7 @@ const Testimonial = () => {
       id: 2,
       name: 'Krishna Bells',
       statement:
-        'w8shub clearly explained the differences between the ML models I was looking at and get past all the obscure acronyms used to designate all the variants.',
+        'W8SHub clearly explained the differences between the ML models I was looking at and get past all the obscure acronyms used to designate all the variants.',
       image_url:
         'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-aiysha.e119a0c1.jpg',
       position: 'Product Manager at Google',

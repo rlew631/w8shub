@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import {
   Box,
   Typography,
   TextField,
-  TextareaAutosize,
+  // TextareaAutosize,
   Button,
 } from '@mui/material';
 
@@ -56,7 +57,20 @@ const ContactUs = () => {
           onChange={(e) => setSubject(e.target.value)}
         />
 
-        <TextareaAutosize
+        <TextField
+          label="Message"
+          minRows={6}
+          variant="outlined"
+          placeholder="Enter a message"
+          fullWidth
+          multiline
+          spellCheck
+          className='inputField'
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+
+        {/* <TextareaAutosize
           aria-label="minimum height"
           minRows={6}
           placeholder="Enter a message"
@@ -64,7 +78,7 @@ const ContactUs = () => {
           spellCheck
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-        />
+        /> */}
 
         <Button
           variant="contained"

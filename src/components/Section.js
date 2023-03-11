@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Card, CardContent} from '@mui/material';
 import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import PermDataSettingIcon from '@mui/icons-material/PermDataSetting';
@@ -26,19 +26,14 @@ const Section = () => {
     },
   ];
   return (
-    <Box sx={{ flexGrow: 1, minHeight: '400px' }}>
-      <Grid container className='sectionGridContainer'>
+    <Box sx={{ flexGrow: 1, height: '100%', minHeight: '400px'}}>
+      <Grid container spacing={2} className='sectionGridContainer'>
         {sectionItems.map((item) => (
-          <Grid
-            item
-            xs={12}
-            md={3.5}
-            minHeight={300}
-            key={item.id}
-            className='sectionGridItem'
-          >
-            {item.icon}
-            <Typography>{item.sentence}</Typography>
+          <Grid item sm={6} md={4} key={item.id}>
+            <Card className='sectionGridItem'>
+              {item.icon}
+              <Typography>{item.sentence}</Typography>
+            </Card>
           </Grid>
         ))}
       </Grid>
