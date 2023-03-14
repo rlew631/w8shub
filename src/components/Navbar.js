@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {useRef, useState, useEffect} from 'react';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import {AppBar, Box, Toolbar, Typography, Button, IconButton,
   Menu, MenuItem, ListItemText} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,7 +18,7 @@ export default function Navbar(props) {
     setAnchorEl(null);
   };
   
-  // dealing with padding above page content
+  // padding above page content behind navbar
   const [navbarHeight, setNavbarHeight] = useState(0);
   const navbarRef = useRef(null)
   useEffect(() => {
@@ -26,7 +28,6 @@ export default function Navbar(props) {
   return (
     <div>
       <AppBar position="fixed" ref={navbarRef}>
-      {/* <AppBar position="sticky"> */}
         <Toolbar>
           <IconButton
             size="large"
@@ -66,6 +67,16 @@ export default function Navbar(props) {
             {props.page}
             {/* displays the page name */}
           </Typography>
+
+          {props.darkMode === true ? <>Light Mode</> : <>Dark Mode</>}
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={() => props.toggleDarkMode(!props.darkMode)}
+            color="inherit">
+
+            {props.darkMode === true ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
+
           <Button color="inherit" href="/login">Login</Button>
         </Toolbar>
       </AppBar>

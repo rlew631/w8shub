@@ -1,5 +1,7 @@
+import { useState } from 'react';
+
 // import {Navbar, Hero, Section, Testimonial, ContactUs, Footer, AboutUs} from '@/components'
-import Navbar from "@/components/navbar"
+import Navbar from "@/components/Navbar"
 import Hero from "@/components/landing/Hero"
 import Section from "@/components/landing/Section"
 import Testimonial from "@/components/landing/Testimonial"
@@ -15,12 +17,23 @@ const darkTheme = createTheme({
   },
 });
 
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
 function App() {
+
+  // dark mode toggle stuff
+  const [darkMode, setDarkMode] = useState(false);
+  const theme = darkMode ? darkTheme : lightTheme;
+
   return (
-    <>
-    <ThemeProvider theme={darkTheme}>
+
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar page='HOME'/>
+      <Navbar page='HOME' darkMode={darkMode} toggleDarkMode={setDarkMode}/>
       <Hero />
       <Section />
       <AboutUs />
@@ -28,7 +41,6 @@ function App() {
       <ContactUs />
       <Footer />
     </ThemeProvider>
-    </>
 
   );
 }

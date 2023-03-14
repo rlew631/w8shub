@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import Navbar from '../../components/navbar'
+import Navbar from '../../components/Navbar'
 import {rows, columns} from '../../components/hub/plot_data'
 import {Plot} from '../../components/hub/plot'
 
@@ -16,8 +16,16 @@ const darkTheme = createTheme({
     mode: 'dark',
   },
 });
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
 
 export default function App() {
+    // dark mode toggle
+    const [darkMode, setDarkMode] = useState(false);
+    const theme = darkMode ? darkTheme : lightTheme;
   
   // for the toggle
   const [viewModels, setViewModels] = React.useState('Classification');
@@ -45,10 +53,9 @@ export default function App() {
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar page='HUB'/>
-        {/* <br/> */}
+        <Navbar page='HUB' darkMode={darkMode} toggleDarkMode={setDarkMode}/>
         <Box sx={{
           flexGrow: 1,
           padding: '20px',
@@ -83,7 +90,9 @@ export default function App() {
             experimentalFeatures={{ newEditingApi: true }}
             onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
           />
+          {viewModels != 'Pose' &&
           <Plot x={plotX} y={plotY}/>
+          }
         </Box>
 
       </ThemeProvider>
