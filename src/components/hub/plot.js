@@ -47,7 +47,7 @@ export function Plot(props) {
         xref: 'paper',
         x: 0.05,
       },
-      template:template,
+      template: props.theme === 'dark' ? template : null,
       xaxis: {
         title: {
           text: 'Model',

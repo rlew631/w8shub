@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useRef, useState, useEffect} from 'react';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import {AppBar, Box, Toolbar, Typography, Button, IconButton,
+import {AppBar, Toolbar, Typography, Button, IconButton,
   Menu, MenuItem, ListItemText} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -24,6 +24,11 @@ export default function Navbar(props) {
   useEffect(() => {
     setNavbarHeight(navbarRef.current.offsetHeight);
   },[]);
+
+  const handleThemeChange = (currentTheme) => {
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    props.onThemeChange(newTheme);
+  };
 
   return (
     <div>
@@ -50,9 +55,7 @@ export default function Navbar(props) {
           >
             <Link href="/">
               <MenuItem onClick={handleClose}>
-                {/* <ListItemIcon>
-                  <Icon className="navbar-item" />
-                </ListItemIcon> */}
+
                 Home
               </MenuItem>
             </Link>
@@ -64,17 +67,15 @@ export default function Navbar(props) {
 
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {props.page}
-            {/* displays the page name */}
+            {props.page}{/* displays the page name */}
           </Typography>
 
-          {props.darkMode === true ? <>Light Mode</> : <>Dark Mode</>}
+          {props.theme === 'light' ? <>Dark Mode</> : <>Light Mode</>}
           <IconButton
             sx={{ ml: 1 }}
-            onClick={() => props.toggleDarkMode(!props.darkMode)}
+            onClick={() => handleThemeChange(props.page)}
             color="inherit">
-
-            {props.darkMode === true ? <Brightness7Icon /> : <Brightness4Icon />}
+            {props.theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
 
           <Button color="inherit" href="/login">Login</Button>
