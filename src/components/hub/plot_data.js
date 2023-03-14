@@ -43,7 +43,7 @@ const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'D6', dataset: 'COCO', map50: 74.0, fps: 44, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6E', dataset: 'COCO', map50: 74.4, notes: 'https://github.com/WongKinYiu/yolov7/tree/pose https://arxiv.org/abs/2204.06806', fps: 36, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt'},
 
-  {modelType: 'Pose Estimation', modelName: 'YOLOv7', subModel: 'w6-pose', dataset: 'Keypoints Labels of MS COCO 2017', map50: 0, notes: 'multi-person capable https://arxiv.org/abs/2204.06806', fps: 0, testSize: 0, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt'},
+  {modelType: 'Pose', modelName: 'YOLOv7', subModel: 'W6-pose', dataset: 'Keypoints Labels of MS COCO 2017', map50: 0, notes: 'multi-person capable https://arxiv.org/abs/2204.06806', fps: 0, testSize: 0, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt'},
 
   {modelType: 'Segmentation', modelName: 'YOLOv7', subModel: 'mask', dataset: 'COCO', map50: 69.4, notes: 'YOLOv7 for instance segmentation (YOLOR + YOLOv5 + YOLACT)', testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-seg.pt'},
 ]
@@ -68,8 +68,11 @@ const rows = mylist.map(item => {
   if (item.modelName == 'YOLOv5'){
     item.modelURL = 'https://github.com/ultralytics/yolov5'
   }
-  else if (item.modelName = 'YOLOv6'){
+  else if (item.modelName == 'YOLOv6'){
     item.modelURL = 'https://github.com/meituan/YOLOv6'
+  }
+  else if (item.modelName == 'YOLOv7'){
+    item.modelURL = 'https://github.com/WongKinYiu/yolov7'
   }
   return item
 })
@@ -80,7 +83,6 @@ const columns = [
     field: 'modelType',
     headerName: 'Model type',
     width: 150,
-    // editable: true,
   },
   {
     field: 'modelName',
@@ -110,7 +112,6 @@ const columns = [
     field: 'notes',
     headerName: 'Notes',
     width: 200,
-    // resizable: true, // does not do anything
   },
   {
     field: 'link',

@@ -1,6 +1,8 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import Navbar from '../../components/navbar'
 import {rows, columns} from '../../components/hub/plot_data'
@@ -9,8 +11,6 @@ import {Plot} from '../../components/hub/plot'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// import "../styles.css";
-
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -18,12 +18,22 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
+  
+  // for the toggle
+  const [viewModels, setViewModels] = React.useState('Classification');
+  const handleChange = (event, newViewModels) => {
+    setViewModels(newViewModels);
+  };
+  const rowEntries = rows.filter(entry => entry.modelType == viewModels);
+
+  // for the data grid
   const [pageSize, setPageSize] = React.useState(10);
   const [plotX, setPlotX] = React.useState([]);
   const [plotY, setPlotY] = React.useState([]);
 
 
   const onRowsSelectionHandler = (ids) => {
+    // this creates the graph
     // this function needs to be hijacked to update the list of items in the above hook
     const selectedRowsData = ids.map((id) => rows.find((row) => row.id === id));
     console.log(selectedRowsData);
@@ -38,7 +48,7 @@ export default function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Navbar page='HUB'/>
-        <br/>
+        {/* <br/> */}
         <Box sx={{
           flexGrow: 1,
           padding: '20px',
@@ -46,10 +56,23 @@ export default function App() {
           justifyContent: 'center',
           minHeight: '300px',
           width: '100%'
-        }}>
+        }}
+        >
+          <ToggleButtonGroup
+            color="primary"
+            value={viewModels}
+            exclusive
+            onChange={handleChange}
+            aria-label="Platform"
+            sx={{paddingBottom: '20px'}}
+          >
+            <ToggleButton value="Classification">Classification</ToggleButton>
+            <ToggleButton value="Segmentation">Segmentation</ToggleButton>
+            <ToggleButton value="Pose">Pose Estimation</ToggleButton>
+          </ToggleButtonGroup>
           <DataGrid
-            sx={{height: 111 + 38*pageSize}}
-            rows={rows}
+            sx={{height: 111 + Math.min(38*pageSize, 38*rowEntries.length)}}
+            rows={rowEntries}
             columns={columns}
             pageSize={pageSize}
             rowHeight={38}
