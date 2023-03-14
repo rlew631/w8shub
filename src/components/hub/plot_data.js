@@ -34,10 +34,24 @@ const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'N6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6n6.pt'}, 
   {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'S6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6s6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'M6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6m6.pt'},
-  {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'L6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6l6.pt'}, 
+  {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'L6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6l6.pt'},
+
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: '', dataset: 'COCO', map50: 69.7, fps: 161, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'X', dataset: 'COCO', map50: 71.2, fps: 114, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'W6', dataset: 'COCO', map50: 72.6, fps: 84, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6', dataset: 'COCO', map50: 73.5, fps: 56, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'D6', dataset: 'COCO', map50: 74.0, fps: 44, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6E', dataset: 'COCO', map50: 74.4, notes: 'https://github.com/WongKinYiu/yolov7/tree/pose https://arxiv.org/abs/2204.06806', fps: 36, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt'},
+
+  {modelType: 'Pose Estimation', modelName: 'YOLOv7', subModel: 'w6-pose', dataset: 'Keypoints Labels of MS COCO 2017', map50: 0, notes: 'multi-person capable https://arxiv.org/abs/2204.06806', fps: 0, testSize: 0, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt'},
+
+  {modelType: 'Segmentation', modelName: 'YOLOv7', subModel: 'mask', dataset: 'COCO', map50: 69.4, notes: 'YOLOv7 for instance segmentation (YOLOR + YOLOv5 + YOLACT)', testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-seg.pt'},
 ]
 
 // include DAMO YOLO: https://github.com/tinyvision/DAMO-YOLO
+// and YOLOP: YOU ONLY LOOK ONCE FOR PANOPTIC DRIVING PERCEPTION https://pytorch.org/hub/hustvl_yolop/
+// also maybe https://github.com/TexasInstruments/edgeai-yolov5/tree/yolo-pose
+// include a `paper:` section
 
 let id = 0
 var today = new Date();
@@ -95,7 +109,8 @@ const columns = [
   {
     field: 'notes',
     headerName: 'Notes',
-    width: 150,
+    width: 200,
+    // resizable: true, // does not do anything
   },
   {
     field: 'link',

@@ -70,16 +70,6 @@ const ContactUs = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        {/* <TextareaAutosize
-          aria-label="minimum height"
-          minRows={6}
-          placeholder="Enter a message"
-          className='textArea'
-          spellCheck
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        /> */}
-
         <Button
           variant="contained"
           type="submit"

@@ -39,11 +39,20 @@ export default function App() {
         <CssBaseline />
         <Navbar page='HUB'/>
         <br/>
-        <Box sx={{ height: 600, width: '100%' }}>
+        <Box sx={{
+          flexGrow: 1,
+          padding: '20px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '300px',
+          width: '100%'
+        }}>
           <DataGrid
+            sx={{height: 111 + 38*pageSize}}
             rows={rows}
             columns={columns}
             pageSize={pageSize}
+            rowHeight={38}
             onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
             rowsPerPageOptions={[10,20,50]}
             checkboxSelection
@@ -51,8 +60,8 @@ export default function App() {
             experimentalFeatures={{ newEditingApi: true }}
             onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
           />
+          <Plot x={plotX} y={plotY}/>
         </Box>
-        <Plot x={plotX} y={plotY}/>
 
       </ThemeProvider>
     </>

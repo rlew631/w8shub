@@ -10,3 +10,11 @@ deploy: have a "deploy your ml model and access it through our API" page
 
 account: basic gh style account management
 
+other services in the arena:
+- https://dagshub.com/
+- https://wandb.ai/site
+- https://www.banana.dev/
+- https://pytorch.org/hub/
+
+for blog:
+- https://dagshub.com/blog/yolov6/
