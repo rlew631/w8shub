@@ -3,7 +3,9 @@ import { useRouter } from 'next/router'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+
 import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 import './styles.css'
 
@@ -45,6 +47,7 @@ export default function MyApp({ Component, pageProps }) {
         onThemeChange={handleThemeChange}
       />
       <Component {...pageProps} theme={theme}/>
+      <Footer />
     </ThemeProvider>
   );
 }

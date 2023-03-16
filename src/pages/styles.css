@@ -86,21 +86,8 @@
 }
 
 .footerContainer {
-  display: flex;
-  align-items: flex-end;
   min-height: 8vh;
   padding: 20px;
-  justify-content: right;
-  background-color: #e0e0e0;
-  flex-direction: column;
-}
-.footerText {
-  color:#444444;
-  padding-bottom: 10px;
-  padding-right: 10px;
-}
-.footerDate {
-  opacity: 0.4;
 }
 .testimonialCard {
   padding: 10px;

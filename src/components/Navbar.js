@@ -78,7 +78,8 @@ export default function Navbar(props) {
             {props.theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
 
-          <Button color="inherit" href="/login">Login</Button>
+          {/* <Button color="inherit" href="/login">Login</Button> */}
+
         </Toolbar>
       </AppBar>
       <div className="navbar_spacing" style={{marginTop: navbarHeight}}/>
