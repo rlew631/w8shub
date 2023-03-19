@@ -48,10 +48,16 @@ const mylist = [
   {modelType: 'Segmentation', modelName: 'YOLOv7', subModel: 'mask', dataset: 'COCO', map50: 69.4, notes: 'YOLOv7 for instance segmentation (YOLOR + YOLOv5 + YOLACT)', testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-seg.pt'},
 ]
 
+// include a button that lets you filter based on the datasets in the list as well!!!!
+
+
 // include DAMO YOLO: https://github.com/tinyvision/DAMO-YOLO
 // and YOLOP: YOU ONLY LOOK ONCE FOR PANOPTIC DRIVING PERCEPTION https://pytorch.org/hub/hustvl_yolop/
 // also maybe https://github.com/TexasInstruments/edgeai-yolov5/tree/yolo-pose
 // include a `paper:` section
+
+// add salient feature extraction: https://github.com/andrewjouffray/salient-extract (segmentation + maybe more. see if there's a way to just cover segmentation first)
+
 
 let id = 0
 var today = new Date();
