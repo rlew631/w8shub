@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+// import { DataGrid } from '@mui/x-data-grid';
+
+import 'react-data-grid/lib/styles.css';
+import DataGrid from 'react-data-grid';
+
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
@@ -17,21 +21,30 @@ export default function App(props) {
   const rowEntries = rows.filter(entry => entry.modelType == viewModels);
 
   // for the data grid
-  const [pageSize, setPageSize] = React.useState(10);
   const [plotX, setPlotX] = React.useState([]);
   const [plotY, setPlotY] = React.useState([]);
 
+  const [selectedRows, setSelectedRows] = useState(new Set());
 
-  const onRowsSelectionHandler = (ids) => {
+  const onRowsSelectionHandler = () => {
     // this creates the graph
     // this function needs to be hijacked to update the list of items in the above hook
-    const selectedRowsData = ids.map((id) => rows.find((row) => row.id === id));
-    console.log(selectedRowsData);
+    const selectedRowsData = rows.filter(row => selectedRows.has(row.id));
+    // console.log(selectedRowsData);
     const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
     const yvals = selectedRowsData.map(row => row.map50)
     setPlotX(xvals)
     setPlotY(yvals)
   };
+
+  useEffect(() => {
+    onRowsSelectionHandler(selectedRows);  // this method call API to get data 
+  },[selectedRows]);
+
+  // function rowHeight(rows) {
+  //   // should be based on the content of the row
+  //   return rows.id*25;
+  // }
 
   return (
     <>
@@ -57,17 +70,20 @@ export default function App(props) {
           <ToggleButton value="Pose">Pose Estimation</ToggleButton>
         </ToggleButtonGroup>
         <DataGrid
-          sx={{height: 111 + Math.min(38*pageSize, 38*rowEntries.length)}}
+          // see: https://github.com/adazzle/react-data-grid/blob/main/README.md
+          // sx={{height: 111 + Math.min(38*pageSize, 38*rowEntries.length)}}
           rows={rowEntries}
           columns={columns}
-          pageSize={pageSize}
-          rowHeight={38}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[10,20,50]}
-          checkboxSelection
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-          onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
+          rowHeight={35}
+          selectedRows={selectedRows}
+          onSelectedRowsChange={setSelectedRows}
+          rowKeyGetter={row => row.id}
+          // rowHeight={38}
+          // rowsPerPageOptions={[10,20,50]}
+          // checkboxSelection
+          // disableSelectionOnClick
+          // experimentalFeatures={{ newEditingApi: true }}
+          // onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
         />
         {viewModels != 'Pose' &&
         <Plot x={plotX} y={plotY} theme={props.theme}/>
