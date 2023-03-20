@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import Box from '@mui/material/Box';
-
 // import { DataGrid } from '@mui/x-data-grid';
 
 import 'react-data-grid/lib/styles.css';
@@ -22,7 +21,6 @@ export default function App(props) {
   const rowEntries = rows.filter(entry => entry.modelType == viewModels);
 
   // for the data grid
-  const [pageSize, setPageSize] = React.useState(10);
   const [plotX, setPlotX] = React.useState([]);
   const [plotY, setPlotY] = React.useState([]);
 
@@ -31,29 +29,22 @@ export default function App(props) {
   const onRowsSelectionHandler = () => {
     // this creates the graph
     // this function needs to be hijacked to update the list of items in the above hook
-    // const selectedRowsData = ids.map((id) => rows.find((row) => row.id === id));
-    console.log(selectedRows)
     const selectedRowsData = rows.filter(row => selectedRows.has(row.id));
-    console.log(selectedRowsData);
+    // console.log(selectedRowsData);
     const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
     const yvals = selectedRowsData.map(row => row.map50)
     setPlotX(xvals)
     setPlotY(yvals)
   };
-  // const onRowsSelectionHandler = () => {
-  //   // this creates the graph
-  //   // this function needs to be hijacked to update the list of items in the above hook
-  //   // const selectedRowsData = selectedRows.map((row) => row.find((row) => row.id === id));
-  //   console.log(selectedRows);
-  //   // const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
-  //   // const yvals = selectedRowsData.map(row => row.map50)
-  //   // setPlotX(xvals)
-  //   // setPlotY(yvals)
-  // };
 
   useEffect(() => {
     onRowsSelectionHandler(selectedRows);  // this method call API to get data 
   },[selectedRows]);
+
+  // function rowHeight(rows) {
+  //   // should be based on the content of the row
+  //   return rows.id*25;
+  // }
 
   return (
     <>
@@ -83,13 +74,11 @@ export default function App(props) {
           // sx={{height: 111 + Math.min(38*pageSize, 38*rowEntries.length)}}
           rows={rowEntries}
           columns={columns}
-          rowHeight={32}
+          rowHeight={35}
           selectedRows={selectedRows}
           onSelectedRowsChange={setSelectedRows}
           rowKeyGetter={row => row.id}
-          // pageSize={pageSize}
           // rowHeight={38}
-          // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           // rowsPerPageOptions={[10,20,50]}
           // checkboxSelection
           // disableSelectionOnClick

@@ -1,4 +1,6 @@
 import Link from '@mui/material/Link';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 import {SelectColumn} from 'react-data-grid';
 
 const mylist = [
@@ -15,11 +17,11 @@ const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv5', subModel: 'x6', dataset: 'COCO', map50: 72.7, notes: 'P6', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv5', subModel: 'x6 w/ TTA', dataset: 'COCO', map50: 72.7, notes: 'TTA (Test Time Augmentation). Same weights as YOLOv5x6 model with TTA enabled. See link for details on setting up runtime environment', linkURL: 'https://github.com/ultralytics/yolov5/issues/303'},
 
-  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'n-seg', dataset: 'COCO', map50: 9000, linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n-seg.pt'},
-  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 's-seg', dataset: 'COCO', map50: 9000, linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s-seg.pt'},
-  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'm-seg', dataset: 'COCO', map50: 9000, linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m-seg.pt'},
-  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'l-seg', dataset: 'COCO', map50: 9000, linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l-seg.pt'},
-  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'x-seg', dataset: 'COCO', map50: 9000, linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x-seg.pt'},
+  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'n-seg', dataset: 'COCO', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n-seg.pt'},
+  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 's-seg', dataset: 'COCO', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s-seg.pt'},
+  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'm-seg', dataset: 'COCO', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m-seg.pt'},
+  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'l-seg', dataset: 'COCO', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l-seg.pt'},
+  {modelType: 'Segmentation', modelName: 'YOLOv5', subModel: 'x-seg', dataset: 'COCO', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x-seg.pt'},
   
   {modelType: 'Classification', modelName: 'YOLOv5', subModel: 'n-cls', dataset: 'ImageNet', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n-cls.pt'},
   {modelType: 'Classification', modelName: 'YOLOv5', subModel: 's-cls', dataset: 'ImageNet', map50: 9000, notes: '', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s-cls.pt'},
@@ -37,11 +39,11 @@ const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'M6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6m6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv6', subModel: 'L6', dataset: 'COCO', map50: 9000, notes: 'p6', linkURL: 'https://github.com/meituan/YOLOv6/releases/download/0.3.0/yolov6l6.pt'},
 
-  {modelType: 'Classification', modelName: 'YOLOv7', subModel: '', dataset: 'COCO', map50: 69.7, fps: 161, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
-  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'X', dataset: 'COCO', map50: 71.2, fps: 114, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
-  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'W6', dataset: 'COCO', map50: 72.6, fps: 84, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt'},
-  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6', dataset: 'COCO', map50: 73.5, fps: 56, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt'},
-  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'D6', dataset: 'COCO', map50: 74.0, fps: 44, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: '', dataset: 'COCO', map50: 69.7, notes: '', fps: 161, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'X', dataset: 'COCO', map50: 71.2, notes: '', fps: 114, testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'W6', dataset: 'COCO', map50: 72.6, notes: '', fps: 84, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6', dataset: 'COCO', map50: 73.5, notes: '', fps: 56, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt'},
+  {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'D6', dataset: 'COCO', map50: 74.0, notes: '', fps: 44, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6E', dataset: 'COCO', map50: 74.4, notes: 'https://github.com/WongKinYiu/yolov7/tree/pose https://arxiv.org/abs/2204.06806', fps: 36, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt'},
 
   {modelType: 'Pose', modelName: 'YOLOv7', subModel: 'W6-pose', dataset: 'Keypoints Labels of MS COCO 2017', map50: 0, notes: 'multi-person capable https://arxiv.org/abs/2204.06806', fps: 0, testSize: 0, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt'},
@@ -85,58 +87,40 @@ const rows = mylist.map(item => {
 })
 
 const columns = [
-  SelectColumn,
-  // { field: 'id', headerName: 'ID', width: 90 },
-  { key: 'id', name: 'ID' },
-  // {
-  //   field: 'modelType',
-  //   headerName: 'Model type',
-  //   width: 150,
-  // },
-  { key: 'modelType', name: 'Model Type' },
-  // {
-  //   field: 'modelName',
-  //   headerName: 'Model Name',
-  //   width: 150,
-  //   renderCell: (params) => (
-  //     <Link href={`${params.row.modelURL}`}>{params.row.modelName}</Link>
-  //   )
-  // },
-  { key: 'modelName', name: 'Model Name' },
-  // {
-  //   field: 'subModel',
-  //   headerName: 'Sub-model',
-  //   width: 150,
-  // },
-  { key: 'subModel', name: 'Sub-model' },
-  // {
-  //   field: 'dataset',
-  //   headerName: 'Dataset',
-  //   width: 150,
-  // },
-  { key: 'dataset', name: 'Dataset' },
-  // {
-  //   field: 'map50',
-  //   headerName: 'mAP 50',
-  //   type: 'number',
-  //   width: 110,
-  // },
-  { key: 'map50', name: 'mAP 50' },
-  // {
-  //   field: 'notes',
-  //   headerName: 'Notes',
-  //   width: 200,
-  // },
-  { key: 'notes', name: 'Notes' },
-  // {
-  //   field: 'link',
-  //   headerName: 'Link',
-  //   width: 150,
-  //   renderCell: (params) => (
-  //     <Link href={`${params.row.linkURL}`}>{params.row.modelName + params.row.subModel}</Link>
-  //   )
-  // },
-  { key: 'link', name: 'Link' },
+  SelectColumn, // checkboxes
+  // { key: 'id', name: 'ID', resizable: true,},
+  { key: 'modelType', name: 'Model Type', resizable: true,},
+  {
+    key: 'modelName',
+    name: 'Model Name',
+    formatter(props) {
+      return <Link href={`${props.row.modelURL}`}>{props.row.modelName}</Link>
+    },
+    resizable: true,
+  },
+  { key: 'subModel', name: 'Sub-model', resizable: true,},
+  { key: 'dataset', name: 'Dataset', resizable: true,},
+  { key: 'map50', name: 'mAP 50', resizable: true,},
+  {
+    key: 'notes',
+    name: 'Notes',
+    formatter(props) {
+      return(
+        <Tooltip title={props.row.notes} placement="bottom-start">
+          <Button>{props.row.notes}</Button>
+        </Tooltip>
+      )
+    },
+    width: 200,
+    resizable: true},
+  {
+    key: 'link',
+    name: 'Link',
+    formatter(props) {
+      return <Link href={`${props.row.linkURL}`}>{props.row.modelName + props.row.subModel}</Link>
+    },
+    resizable: true,
+  },
 ];
 
 export {rows, columns}
