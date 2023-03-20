@@ -1,4 +1,5 @@
 import Link from '@mui/material/Link';
+import {SelectColumn} from 'react-data-grid';
 
 const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv5', subModel: 'n', dataset: 'COCO', map50: 45.7, notes: 'P5', linkURL: 'https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt'},
@@ -84,49 +85,58 @@ const rows = mylist.map(item => {
 })
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'modelType',
-    headerName: 'Model type',
-    width: 150,
-  },
-  {
-    field: 'modelName',
-    headerName: 'Model Name',
-    width: 150,
-    renderCell: (params) => (
-      <Link href={`${params.row.modelURL}`}>{params.row.modelName}</Link>
-    )
-  },
-  {
-    field: 'subModel',
-    headerName: 'Sub-model',
-    width: 150,
-  },
-  {
-    field: 'dataset',
-    headerName: 'Dataset',
-    width: 150,
-  },
-  {
-    field: 'map50',
-    headerName: 'mAP 50',
-    type: 'number',
-    width: 110,
-  },
-  {
-    field: 'notes',
-    headerName: 'Notes',
-    width: 200,
-  },
-  {
-    field: 'link',
-    headerName: 'Link',
-    width: 150,
-    renderCell: (params) => (
-      <Link href={`${params.row.linkURL}`}>{params.row.modelName + params.row.subModel}</Link>
-    )
-  },
+  SelectColumn,
+  // { field: 'id', headerName: 'ID', width: 90 },
+  { key: 'id', name: 'ID' },
+  // {
+  //   field: 'modelType',
+  //   headerName: 'Model type',
+  //   width: 150,
+  // },
+  { key: 'modelType', name: 'Model Type' },
+  // {
+  //   field: 'modelName',
+  //   headerName: 'Model Name',
+  //   width: 150,
+  //   renderCell: (params) => (
+  //     <Link href={`${params.row.modelURL}`}>{params.row.modelName}</Link>
+  //   )
+  // },
+  { key: 'modelName', name: 'Model Name' },
+  // {
+  //   field: 'subModel',
+  //   headerName: 'Sub-model',
+  //   width: 150,
+  // },
+  { key: 'subModel', name: 'Sub-model' },
+  // {
+  //   field: 'dataset',
+  //   headerName: 'Dataset',
+  //   width: 150,
+  // },
+  { key: 'dataset', name: 'Dataset' },
+  // {
+  //   field: 'map50',
+  //   headerName: 'mAP 50',
+  //   type: 'number',
+  //   width: 110,
+  // },
+  { key: 'map50', name: 'mAP 50' },
+  // {
+  //   field: 'notes',
+  //   headerName: 'Notes',
+  //   width: 200,
+  // },
+  { key: 'notes', name: 'Notes' },
+  // {
+  //   field: 'link',
+  //   headerName: 'Link',
+  //   width: 150,
+  //   renderCell: (params) => (
+  //     <Link href={`${params.row.linkURL}`}>{params.row.modelName + params.row.subModel}</Link>
+  //   )
+  // },
+  { key: 'link', name: 'Link' },
 ];
 
 export {rows, columns}
