@@ -26,21 +26,33 @@ export default function App(props) {
   const [plotX, setPlotX] = React.useState([]);
   const [plotY, setPlotY] = React.useState([]);
 
-  const [selectedRows, setSelectedRows] = useState();
+  const [selectedRows, setSelectedRows] = useState(new Set());
 
   const onRowsSelectionHandler = () => {
     // this creates the graph
     // this function needs to be hijacked to update the list of items in the above hook
-    // const selectedRowsData = selectedRows.map((row) => row.find((row) => row.id === id));
-    console.log(selectedRows);
-    // const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
-    // const yvals = selectedRowsData.map(row => row.map50)
-    // setPlotX(xvals)
-    // setPlotY(yvals)
+    // const selectedRowsData = ids.map((id) => rows.find((row) => row.id === id));
+    console.log(selectedRows)
+    const selectedRowsData = rows.filter(row => selectedRows.has(row.id));
+    console.log(selectedRowsData);
+    const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
+    const yvals = selectedRowsData.map(row => row.map50)
+    setPlotX(xvals)
+    setPlotY(yvals)
   };
+  // const onRowsSelectionHandler = () => {
+  //   // this creates the graph
+  //   // this function needs to be hijacked to update the list of items in the above hook
+  //   // const selectedRowsData = selectedRows.map((row) => row.find((row) => row.id === id));
+  //   console.log(selectedRows);
+  //   // const xvals = selectedRowsData.map(row => row.modelName + row.subModel)
+  //   // const yvals = selectedRowsData.map(row => row.map50)
+  //   // setPlotX(xvals)
+  //   // setPlotY(yvals)
+  // };
 
   useEffect(() => {
-    onRowsSelectionHandler();  // this method call API to get data 
+    onRowsSelectionHandler(selectedRows);  // this method call API to get data 
   },[selectedRows]);
 
   return (
