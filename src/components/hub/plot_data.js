@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link';
 import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+import React from 'react'
 import {SelectColumn} from 'react-data-grid';
 
 const mylist = [
@@ -86,9 +86,15 @@ const rows = mylist.map(item => {
   return item
 })
 
+const NotesCell = React.forwardRef(function MyComponent(props, ref) {
+  //  Spread the props to the underlying DOM element.
+  return (
+    <div {...props} ref={ref} />
+  );
+});
+
 const columns = [
   SelectColumn, // checkboxes
-  // { key: 'id', name: 'ID', resizable: true,},
   { key: 'modelType', name: 'Model Type', resizable: true,},
   {
     key: 'modelName',
@@ -107,7 +113,9 @@ const columns = [
     formatter(props) {
       return(
         <Tooltip title={props.row.notes} placement="bottom-start">
-          <Button>{props.row.notes}</Button>
+            <NotesCell {...props}>
+              {props.row.notes}
+            </NotesCell>
         </Tooltip>
       )
     },
