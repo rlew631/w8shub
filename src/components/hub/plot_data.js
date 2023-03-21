@@ -46,6 +46,14 @@ const mylist = [
   {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'D6', dataset: 'COCO', map50: 74.0, notes: '', fps: 44, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt'},
   {modelType: 'Classification', modelName: 'YOLOv7', subModel: 'E6E', dataset: 'COCO', map50: 74.4, notes: 'https://github.com/WongKinYiu/yolov7/tree/pose https://arxiv.org/abs/2204.06806', fps: 36, testSize: 1280, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt'},
 
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'T', dataset: 'COCO', map50: 42.0, notes: 'mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL20_T_420.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'T*', dataset: 'COCO', map50: 43.6, notes: 'Distilled using DAMO-YOLO-S; mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL20_T_436.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'S', dataset: 'COCO', map50: 46.0, notes: 'mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL25_S_460.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'S*', dataset: 'COCO', map50: 47.7, notes: 'Distilled using DAMO-YOLO-M; mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL25_S_477.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'M', dataset: 'COCO', map50: 49.2, notes: 'mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL35_M_492.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'M*', dataset: 'COCO', map50: 50.2, notes: 'Distilled using DAMO-YOLO-M; mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL35_M_502.pth'},
+  {modelType: 'Classification', modelName: 'DAMO-YOLO', subModel: 'N', dataset: 'COCO', map50: 35.1, notes: 'mAPval 0.5:0.95', linkURL: 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/clean_models/before_distill/damoyolo_tinynasL20_N_351.pth'},
+
   {modelType: 'Pose', modelName: 'YOLOv7', subModel: 'W6-pose', dataset: 'Keypoints Labels of MS COCO 2017', map50: 0, notes: 'multi-person capable https://arxiv.org/abs/2204.06806', fps: 0, testSize: 0, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt'},
 
   {modelType: 'Segmentation', modelName: 'YOLOv7', subModel: 'mask', dataset: 'COCO', map50: 69.4, notes: 'YOLOv7 for instance segmentation (YOLOR + YOLOv5 + YOLACT)', testSize: 640, linkURL: 'https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-seg.pt'},
@@ -53,8 +61,6 @@ const mylist = [
 
 // include a button that lets you filter based on the datasets in the list as well!!!!
 
-
-// include DAMO YOLO: https://github.com/tinyvision/DAMO-YOLO
 // and YOLOP: YOU ONLY LOOK ONCE FOR PANOPTIC DRIVING PERCEPTION https://pytorch.org/hub/hustvl_yolop/
 // also maybe https://github.com/TexasInstruments/edgeai-yolov5/tree/yolo-pose
 // include a `paper:` section
@@ -83,6 +89,9 @@ const rows = mylist.map(item => {
   else if (item.modelName == 'YOLOv7'){
     item.modelURL = 'https://github.com/WongKinYiu/yolov7'
   }
+  else if (item.modelName == 'DAMO-YOLO'){
+    item.modelURL = 'https://github.com/tinyvision/DAMO-YOLO'
+  }
   return item
 })
 
@@ -100,7 +109,10 @@ const columns = [
     key: 'modelName',
     name: 'Model Name',
     formatter(props) {
-      return <Link href={`${props.row.modelURL}`}>{props.row.modelName}</Link>
+      if (props.row.modelURL){
+        return <Link href={`${props.row.modelURL}`}>{props.row.modelName}</Link>
+      }
+      return <>{props.row.modelName}</>
     },
     resizable: true,
   },
