@@ -4,9 +4,17 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import {AppBar, Toolbar, Typography, Button, IconButton,
   Menu, MenuItem, ListItemText} from '@mui/material';
+  import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
+import Image from 'next/image';
 
 import Link from '@mui/material/Link';
+
+function DropdownIcons(props){
+  return(
+    <Image src={props.src} width='20' height='20' style={{marginRight:"0.4em"}}/>
+  )
+}
 
 export default function Navbar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,12 +63,13 @@ export default function Navbar(props) {
           >
             <Link href="/">
               <MenuItem onClick={handleClose}>
-
+                <DropdownIcons src='/home-icon.svg'/>
                 Home
               </MenuItem>
             </Link>
             <Link href="/hub">
               <MenuItem onClick={handleClose}>
+                <Image src='/hub-icon.svg' width='20' height='20' style={{marginRight:"0.4em"}}/>
                 Hub
               </MenuItem>
             </Link>
