@@ -10,15 +10,12 @@ const Footer = () => {
       display="flex"
     >
       <Box alignSelf="flex-end">
-      <Button variant="contained" href="https://ryanlewisengineering.com">
-        Developed by Ryan Lewis
-        {/* <Typography>
+        <Typography>
           Developed by{' '}
           <Link href="https://ryanlewisengineering.com" target="_blank" underline="none">
             Ryan Lewis
           </Link>
-        </Typography> */}
-      </Button>
+        </Typography>
       </Box>
     </AppBar>
   );
