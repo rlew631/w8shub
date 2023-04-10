@@ -52,7 +52,7 @@ export default function MyApp({ Component, pageProps }) {
         onThemeChange={handleThemeChange}
       />
       <Component {...pageProps} theme={theme}/>
-      <Footer />
+      <Footer theme={theme}/>
     </ThemeProvider>
     </>
   );

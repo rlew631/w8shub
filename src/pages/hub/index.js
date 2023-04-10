@@ -78,6 +78,7 @@ export default function App(props) {
           selectedRows={selectedRows}
           onSelectedRowsChange={setSelectedRows}
           rowKeyGetter={row => row.id}
+          className={props.theme === 'dark' ? '' : 'rdg-light'}
           // rowHeight={38}
           // rowsPerPageOptions={[10,20,50]}
           // checkboxSelection
