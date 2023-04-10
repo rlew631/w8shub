@@ -1,4 +1,7 @@
-consider implementing pocketbase (sqlite db) for storing model data
+ToDo:
+- consider implementing supabase (with a cronjob to update dail and prevent deactivation)
+- implement datagrid light theme: https://github.com/adazzle/react-data-grid/issues/2170
+- add icons for menu dropdwon
 
 implement firebase and oath for login on all pages
 

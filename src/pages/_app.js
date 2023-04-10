@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -39,6 +40,10 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
+    <>
+    <Head>
+      <link rel="shortcut icon" href="/favicon.svg" />
+    </Head>
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <CssBaseline />
       <Navbar
@@ -49,5 +54,6 @@ export default function MyApp({ Component, pageProps }) {
       <Component {...pageProps} theme={theme}/>
       <Footer />
     </ThemeProvider>
+    </>
   );
 }
